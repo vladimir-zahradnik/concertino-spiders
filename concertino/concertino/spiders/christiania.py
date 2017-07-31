@@ -9,7 +9,7 @@ from concertino.items import ChristianiaItem
 class ChristianiaSpider(scrapy.Spider):
     name = 'christiania'
     allowed_domains = ['www.christiania.eu.sk']
-    start_url = 'http://www.christiania.eu.sk/'
+    start_urls = ['http://www.christiania.eu.sk/program']
     _place = 'Christiania'
 
     def parse(self, response):

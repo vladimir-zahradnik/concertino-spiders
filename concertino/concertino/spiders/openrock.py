@@ -7,7 +7,7 @@ from concertino.items import OpenRockItem
 class OpenRockSpider(scrapy.Spider):
     name = "openrock"
     allowed_domains = ['www.openrock.sk']
-    start_url = 'http://www.openrock.sk/programtab'
+    start_urls = ['http://www.openrock.sk/programtab']
 
     def parse(self, response):
 
