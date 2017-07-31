@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
 import scrapy
 
 from concertino.items import OpenRockItem
@@ -6,7 +6,8 @@ from concertino.items import OpenRockItem
 
 class OpenRockSpider(scrapy.Spider):
     name = "openrock"
-    start_urls = ['http://www.openrock.sk/programtab']
+    allowed_domains = ['www.openrock.sk']
+    start_url = 'http://www.openrock.sk/programtab'
 
     def parse(self, response):
 
@@ -20,4 +21,3 @@ class OpenRockSpider(scrapy.Spider):
             item['event_url'] = event.css('td.event-list-table-name a::attr(href)').extract_first()
 
             yield item
-    

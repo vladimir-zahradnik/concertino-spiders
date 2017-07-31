@@ -18,3 +18,7 @@ class ConcertinoItem(Item):
 
 class OpenRockItem(ConcertinoItem):
     event_url = Field()
+
+class ChristianiaItem(ConcertinoItem):
+    description = Field()
+    image_url = Field()
