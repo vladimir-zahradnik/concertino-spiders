@@ -22,3 +22,12 @@ class OpenRockItem(ConcertinoItem):
 class ChristianiaItem(ConcertinoItem):
     description = Field()
     image_url = Field()
+
+class TabackaItem(ConcertinoItem):
+    description = Field()
+    image_url = Field()
+    event_url = Field()
+    category = Field()
+    room = Field()
+    price = Field()
+
