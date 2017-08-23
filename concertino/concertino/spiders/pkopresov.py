@@ -2,6 +2,7 @@
 import scrapy
 
 from concertino.items import PkoPresovItem
+from w3lib.html import remove_tags
 
 
 class PkopresovSpider(scrapy.Spider):
@@ -35,10 +36,11 @@ class PkopresovSpider(scrapy.Spider):
         item['date'] = ' '.join([day_of_month, month, year])
         item['time'] = time
 
-        # Join all paragraphs into one text block. Ignore styles and replace non-breaking space
+        # Join all paragraphs into one text block. Replace non-breaking space
         # with regular space character.
-        # TODO: Events have embedded formatting marks with text. We should find a way how to remove all of them.
-        item['description'] = '\n\n'.join(event.xpath('//div[@class="itemFullText"]/p/span/text()').
-                                        extract()).replace(u'\xa0', u' ')
+        description = '\n\n'.join(event.xpath('//div[@class="itemFullText"]/p').extract()).replace(u'\xa0', u' ')
+
+        # Remove HTML formatting tags.
+        item['description'] = remove_tags(description, keep=('a', 'strong'))
 
         yield item
