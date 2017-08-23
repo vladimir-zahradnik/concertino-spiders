@@ -31,3 +31,7 @@ class TabackaItem(ConcertinoItem):
     room = Field()
     price = Field()
 
+class PkoPresovItem(ConcertinoItem):
+    description = Field()
+    image_url = Field()
+
